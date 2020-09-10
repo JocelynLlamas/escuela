@@ -1,3 +1,4 @@
+package learning.java.school;
 
 class Subject {
     private String name;
