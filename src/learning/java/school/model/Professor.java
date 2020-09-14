@@ -1,6 +1,6 @@
-package learning.java.school;
+package learning.java.school.model;
 
-class Professor {
+public class Professor {
     private String name;
 
 
@@ -11,4 +11,5 @@ class Professor {
     public void setName(String name) {
         this.name = name;
     }
+
 }

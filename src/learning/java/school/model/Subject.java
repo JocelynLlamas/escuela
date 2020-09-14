@@ -1,6 +1,6 @@
-package learning.java.school;
+package learning.java.school.model;
 
-class Subject {
+public class Subject {
     private String name;
     private int credits;
 

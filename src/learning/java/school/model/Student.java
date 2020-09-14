@@ -1,6 +1,6 @@
-package learning.java.school;
+package learning.java.school.model;
 
-class Student {
+public class Student {
     private String name;
     private String code;
 
@@ -9,6 +9,7 @@ class Student {
         this.name = name;
         this.code = code;
     }
+    
     public String getName() {
         return name;
     }

@@ -1,33 +1,52 @@
 package learning.java.school;
 
-import java.util.Scanner;
-//import java.util.regex.Pattern;
+import learning.java.school.model.Group;
+import learning.java.school.model.Professor;
+import learning.java.school.model.Student;
+
+import java.io.IOException;
 
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Group[] groups = prepareOOPGroups();
 
-        //No poner name ni code en los parametros
-        //Pirntln es para porner una linea al final
-        Student []students = new Student[]{
-            new Student("Isaias","1"),
-            new Student("Edgar", "2"),
-            new Student("Alain", "3"),
-            new Student("Caleb","4")
-        };
-
-        System.out.println("Los alumnos son...");
-        Scanner scanner = new Scanner(System.in);
-
-        for (int i=0; i < students.length; i++)
-        {
-            System.out.println(students[i].getName() + "-" + students[i].getCode() );
-
-            System.out.print("Asistió?: ");
-            String response = scanner.next("[YNyn]");
-            
-            System.out.println(students[i].getName() + (response.equalsIgnoreCase("Y") ? "Si" : "No"));
+        for (Group group : groups) {
+            System.out.println("Profesor: " + group.getProfessor().getName());
+            System.out.println("Cupo: " + group.getAvailability() + ", Inscritos: " + group.getEnrolled());
+            System.out.println("Students: ");
+            group.printStudentsList();
+            System.out.println("---------------------------------------");
         }
+
+        groups[1].addStudent(new Student("Caleb", "asd"));
+
+    }
+
+    public static Group[] prepareOOPGroups() {
+        Group[] groups = new Group[2];
+        Professor professorIvan = new Professor();
+        Professor professorPaco = new Professor();
+
+        professorIvan.setName("Ivan Uresti");
+        professorPaco.setName("Paco Torres");
+
+        groups[0] = new Group(20);
+        groups[1] = new Group(15, professorIvan);
+
+        groups[0].setProfessor(professorPaco);
+
+        groups[0].addStudent(new Student("Isaias", "100"));
+        groups[1].addStudent(new Student("Arturo", "201"));
+        groups[0].addStudent(new Student("Angel", "101"));
+        groups[1].addStudent(new Student("Jocelyn", "202"));
+        groups[0].addStudent(new Student("Jose", "102"));
+        groups[1].addStudent(new Student("Alain", "200"));
+        groups[1].addStudent(new Student("Antonio", "203"));
+
+        return groups;
 
     }
 }
+
+
